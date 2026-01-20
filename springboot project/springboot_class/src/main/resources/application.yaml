@@ -1,0 +1,51 @@
+server:
+  port: 8080
+  shutdown: graceful
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+
+spring:
+  application:
+    name: ecommerce1
+    
+  mongodb:
+    uri: mongodb://localhost:27017/ecommerce_db
+    database: ecommerce_db
+
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      indent-output: true
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+
+logging:
+  level:
+    com.example.e_commerce1: DEBUG
+    org.springframework.data.mongodb.core.MongoTemplate: DEBUG
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %highlight(%-5level) [%thread] %logger{36} - %msg%n"
+
+razorpay:
+  key:
+    id: rzp_test_S5iMxGhIunvAOD
+    secret: Hc3au6NzH0InSgbibWH4Y1SI
+  webhook:
+    secret: webhook_secret_xyz
+
+app:
+  free-shipping-threshold: 500.0
+  low-stock-threshold: 10
+  new-arrival-days: 30
+  order-cancellation-window: 24
+  return-window-days: 30
+  loyalty:
+    points-per-100: 1
+    silver-threshold: 5000
+    gold-threshold: 10000
+
+
